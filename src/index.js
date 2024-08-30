@@ -1,12 +1,11 @@
 import app from './app.js';
 import sequelize from './DB/database.js';
-import './models/Users.js'
-import './models/Reservations.js'
+
 async function main() {
     try {
-        await sequelize.sync();
+        await sequelize.sync({force:false});
         console.log('Connection has been established successfully.');
-        app.listen(3001);
+        app.listen(4000);
         console.log("server is listening on port", 4000)
     } catch (error) {
         console.error('Unable to connect to the database:', error);
