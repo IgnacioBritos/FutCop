@@ -1,11 +1,11 @@
 import { Router } from "express";
-const route = Router();
-import { getUsers, createUsers } from "../controllers/users.controllers.js";
+const usersRoute = Router();
+import { getUsers, createUsers, updateUsers, deleteUser, getUser } from "../controllers/users.controllers.js";
 
-route.get('/users', getUsers) //TRAER USUARIOS
-route.post('/users' ,createUsers)//añade usuarios
-route.put('/users/:id')//actualiza o cambia usuario
-route.delete('/users/:id')//elimina un usuario
-route.get('/users/:id')//TRAE UN SOLO USUARIO
+usersRoute.post('/users' ,createUsers)//añade usuarios
+usersRoute.get('/users', getUsers) //TRAER USUARIOS
+usersRoute.get('/users/:id',getUser)//TRAE UN SOLO USUARIO
+usersRoute.put('/users/:id', updateUsers)//actualiza o cambia usuario
+usersRoute.delete('/users/:id',deleteUser)//elimina un usuario
 
-export default route; 
+export default usersRoute; 

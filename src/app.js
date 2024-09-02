@@ -1,7 +1,9 @@
 import express from 'express';
-import route from './routes/users.routes.js';
+import usersRoute from './routes/users.routes.js';
+import reservationsRoute from './routes/reservations.routes.js';
 const app = express();
 app.use(express.json())
-app.use(route)
+app.use(usersRoute);
+app.use(reservationsRoute);
 
 export default app;

@@ -8,6 +8,26 @@ export  const Reservation = sequelize.define('Reservation', {
         primaryKey: true,
         autoIncrement: true,
     },
+    description:{
+        type: DataTypes.STRING(200),
+        allowNull: false,
+    },
+    number_of_players: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+    },
+    start_date: {
+        type: DataTypes.DATEONLY,
+        allowNull: false,  // Campo obligatorio para la fecha de inicio
+    },
+    end_date: {
+        type: DataTypes.DATEONLY,
+        allowNull: false,  // Campo obligatorio para la fecha de finalización
+    },
+    location: {
+        type: DataTypes.STRING(100),
+        allowNull: true,
+    },
     date: {
         type: DataTypes.DATEONLY,  
         allowNull: false,
@@ -16,20 +36,20 @@ export  const Reservation = sequelize.define('Reservation', {
         type: DataTypes.TIME,  
         allowNull: false,
     },
-    number_of_players: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-    },
-    location: {
-        type: DataTypes.STRING(100),
-        allowNull: true,
-    },
     status: {
         type: DataTypes.STRING(50),
         defaultValue: 'pending',
+    },
+    user_id: {
+        type: DataTypes.INTEGER,
+        references: {
+            model: Users,  // Referencia al modelo Users
+            key: 'id',     // Clave primaria en el modelo Users
+        },
+        allowNull: false,
     }
 }, {
-    timestamps: true,  // Añade automáticamente createdAt y updatedAt
+    timestamps: false,  // Añade automáticamente createdAt y updatedAt
 });
 
 // Definir la relación entre User y Reservation
