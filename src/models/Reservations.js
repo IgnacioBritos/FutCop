@@ -7,6 +7,7 @@ export  const Reservation = sequelize.define('Reservation', {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
+        
     },
     description:{
         type: DataTypes.STRING(200),
