@@ -5,5 +5,4 @@ const app = express();
 app.use(express.json())
 app.use(usersRoute);
 app.use(reservationsRoute);
-
 export default app;
