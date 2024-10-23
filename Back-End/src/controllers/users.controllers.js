@@ -11,7 +11,7 @@ export const createUsers = async (req, res) => {
             password_hash,
             location,
         })
-        res.json(newUsers)
+        res.status(200).json(newUsers)
 
     } catch (error) {
         return res.status(500).json({ message: error.message })
@@ -34,7 +34,7 @@ export const loginUser = async (req,res)=>{
         if (!passwordValid) {
             return  res.status(401).json({message:"Invalid Password"})
         }
-        res.json({message:"Login successful",user})
+        res.status(200).json({message:"Login successful",user})
     } catch (error) {
         return res.status(500).json({ message: error.message });
     }

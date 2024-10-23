@@ -1,29 +1,31 @@
-const Register = () => {
+const Register = ({toggleRegister}) => {
   return (
+
       <div className="flex flex-col px-12">
+        <button onClick={toggleRegister}  >X</button>
         <span>Email</span>
         <input
           type="email"
           className="w-full border rounded-md p-2 mb-4"
           name=""
-          id=""
+          id="email"
         />
       <span>Contraseña</span>
       <input
         type="password"
         className="w-full border rounded-md p-2 mb-4"
         name=""
-        id=""
+        id="password"
       />
       <span>Nombre del equipo</span>
       <input
         type="email"
         className="w-full border rounded-md p-2 mb-4"
         name=""
-        id=""
+        id="name"
       />
       <span>Ubicación</span>
-      <input type="..." name="" id="" />
+      <input type="..." name="" id="#" />
       
     </div>
   );

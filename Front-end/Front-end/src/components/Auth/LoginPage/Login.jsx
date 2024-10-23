@@ -1,16 +1,69 @@
-const Login = () => {
-    return (
-      <div className="flex flex-col px-10 gap-1 max-w-sm mx-auto">
-        <span>Email</span>
-        <input type="email" className="w-full border rounded-md p-2 mb-4" name="" id="" />
-        <span>Contraseña</span>
-        <input type="password" className="w-full border rounded-md p-2 mb-4" name="" id="" />
-        <div className="pb-2"><input type="checkbox" className="p-4 " name="" id="" /> <span>Recordar Cuenta</span></div>
-        <button type="button" className="w-full border rounded-md p-2 mb-4 border-[#a1fe5e94]"> Ingresar</button>
-        <div><span>¿No tienes cuenta? <a href="" className="text-[#1f4b86]">Regístrate</a></span></div>
-      </div>
-    );
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { loginUser } from "../../../app/user";
+
+const Login = ({ register, toggleRegister }) => {
+  const [user, setUser] = useState({});
+  const dispatch = useDispatch()
+  const handleChange = (e) => {
+    setUser({
+      ...user,
+      [e.target.name]: e.target.value,
+    });
   };
-  
-  export default Login;
-  
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(loginUser(user))
+    
+  };
+
+  return (
+    <div className="flex flex-col px-10 gap-1 max-w-sm mx-auto">
+      <form onSubmit={handleSubmit}>
+        <span>Email</span>
+        <input
+          type="email"
+          onChange={handleChange}
+          className="w-full border rounded-md p-2 mb-4"
+          name="email"
+          id="email"
+        />
+        <span>Contraseña</span>
+        <input
+          type="password"
+          onChange={handleChange}
+          className="w-full border rounded-md p-2 mb-4"
+          name="password"
+          id="password"
+        />
+        <div className="pb-2">
+          <input
+            type="checkbox"
+            className="p-4 "
+            name="checkbox"
+            onChange={handleChange}
+            id="checkbox"
+          />{" "}
+          <span>Recordar Cuenta</span>
+        </div>
+        <button
+          type="submit "
+          className="w-full border rounded-md p-2 mb-4 border-[#a1fe5e94]"
+        >
+          {" "}
+          Ingresar
+        </button>
+      </form>
+      <div>
+        <span>
+          ¿No tienes cuenta?{" "}
+          <button onClick={toggleRegister} className="text-[#1f4b86]">
+            Regístrate
+          </button>
+        </span>
+      </div>
+    </div>
+  );
+};
+
+export default Login;
