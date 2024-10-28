@@ -6,19 +6,24 @@ export const loginUser = createAsyncThunk(
   "user/loginUser",
   async (userData, { rejectWithValue }) => {
     try {
-      const response = await axios.post("http://localhost:4000/users/login", userData);
+      const response = await axios.post(
+        "http://localhost:4000/users/login",
+        userData
+      );
       return response.data.user; // Devuelves los datos del usuario
     } catch (error) {
-      return rejectWithValue(error.response ? error.response.data : error.message);
+      return rejectWithValue(
+        error.response ? error.response.data : error.message
+      );
     }
   }
 );
 
 const initialState = {
-  user: null,        // Aquí guardarás los datos del usuario tras login
-  isAuthenticated: false,  // Estado para saber si está autenticado
-  isLoading: false,  // Para mostrar cargando mientras se realiza la petición
-  error: null,       // Para guardar el mensaje de error si lo hubiera
+  user: null, // Aquí guardarás los datos del usuario tras login
+  isAuthenticated: false, // Estado para saber si está autenticado
+  isLoading: false, // Para mostrar cargando mientras se realiza la petición
+  error: null, // Para guardar el mensaje de error si lo hubiera
 };
 
 export const userSlice = createSlice({
@@ -35,7 +40,7 @@ export const userSlice = createSlice({
     builder
       .addCase(loginUser.pending, (state) => {
         state.isLoading = true; // Cuando empieza la petición
-        state.error = null;     // Limpias el error previo
+        state.error = null; // Limpias el error previo
       })
       .addCase(loginUser.fulfilled, (state, action) => {
         state.isLoading = false;
