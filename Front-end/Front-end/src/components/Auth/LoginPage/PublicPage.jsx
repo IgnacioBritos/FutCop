@@ -30,7 +30,7 @@ const PublicPage = () => {
             sin complicaciones ni largas coordinaciones. Organiza tus partidos
             en segundos, encuentra rivales variados y asegura una experiencia
             emocionante en cada encuentro. ¡Forma tu equipo, encuentra un rival
-            y vive el fútbol como nunca antes!
+            y vive el fútbol como nunca antes!.
           </p>
         </div>
         {/* Segunda columna (lado derecho) */}
